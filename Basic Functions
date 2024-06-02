@@ -150,3 +150,16 @@ num = 17
 print("Is", num, "a prime number?", is_prime(num))
 
 this is a better solution since it only iterates through a number of divisions as opposed ot the first solutions which tries to divide every number.
+
+
+
+### write a function to convert Celcius to Fahrenheit
+
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+# Example usage:
+celsius_value = 20
+fahrenheit_value = celsius_to_fahrenheit(celsius_value)
+print(f"{celsius_value} degrees Celsius is equal to {fahrenheit_value} degrees Fahrenheit.")
