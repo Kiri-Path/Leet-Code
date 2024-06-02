@@ -258,3 +258,26 @@ if is_palindrome(word):
     print(f"{word} is a palindrome")
 else:
     print(f"{word} is not a palindrome")
+
+
+### From 2 lists, check how many items in one list smaller or equal to each value in the other list.
+
+for eg 
+say i have 2 lists 
+A = [ 1,2,3]
+B = [2,4]
+
+i want to check for each number in B how any numbers in A are less than or equal.
+for example first element in B is 2, there are 2 numbers in A which are less than or equal to this. tehen next element in B is 4, there are 3 elements in A which are less than this. 
+
+therefore output should be [2,3]
+
+def count_less_equal(A, B):
+    result = []
+    for b in B:
+        count = 0
+        for a in A:
+            if a <= b:
+                count += 1
+        result.append(count)
+    return result
