@@ -72,7 +72,6 @@ largest_num = find_largest_number(num_list)
 print("Largest number in the list:", largest_num)
 
 
-
 ### wirte a program to reverse a string
 
 def reverse_string(s):
@@ -99,8 +98,6 @@ print("Factorial of", num, "is", factorial(num))
 
 
 
-
-
 ### write a function to convert Celcius to Fahrenheit
 
 def celsius_to_fahrenheit(celsius):
@@ -113,22 +110,10 @@ fahrenheit_value = celsius_to_fahrenheit(celsius_value)
 print(f"{celsius_value} degrees Celsius is equal to {fahrenheit_value} degrees Fahrenheit.")
 
 
-### write a program to find the largest element in a list
-
-def find_largest(numbers):
-    largest = numbers[0]
-    for num in numbers:
-        if num > largest:
-            largest = num
-    return largest
-
-# Test the function
-nums = [10, 5, 8, 20, 3]
-largest_num = find_largest(nums)
-print(f"The largest number is {largest_num}")
 
 
-write a python program to count the frequency of each element in a list
+
+### write a python program to count the frequency of each element in a list
 
 def count_frequency(numbers):
     frequency = {}
