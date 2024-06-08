@@ -19,6 +19,31 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
 
 
+### solution NOT Reversing string
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        # Mapping of Roman numerals to their integer values
+        roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        
+        result = 0
+        n = len(s)
+        
+        # Iterate over the string from left to right
+        for i in range(n):
+            value = roman_values[s[i]]
+            
+            # If this is not the last character and the next numeral is larger, subtract current value
+            if i < n - 1 and value < roman_values[s[i + 1]]:
+                result -= value
+            else:
+                result += value
+        
+        return result
+
+
+
+###Solution Reversing String
 
 
 class Solution:
