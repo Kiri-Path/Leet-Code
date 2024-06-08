@@ -246,18 +246,6 @@ unique_nums = remove_duplicates(nums)
 print(unique_nums)
 
 
-### Write a Python program to check if a string is a palindrome.
-
-def is_palindrome(string):
-    reversed_string = string[::-1]
-    return string == reversed_string
-
-# Test the function
-word = "madam"
-if is_palindrome(word):
-    print(f"{word} is a palindrome")
-else:
-    print(f"{word} is not a palindrome")
 
 
 ### From 2 lists, check how many items in one list smaller or equal to each value in the other list.
