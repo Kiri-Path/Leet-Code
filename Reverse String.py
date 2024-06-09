@@ -15,13 +15,18 @@ print(s)  # Output: ['o', 'l', 'l', 'e', 'h']
 #Using slicing to create a new reversed list would require O(n) additional space, where n is the number of elements in the list.
 #therefore, we do not want to create  a new list, instead we want to re-arrange the existing list
 
+#### SOLUTION
+
+
 def reverseString(s):
     # first set right and left with indexes 0 and len(s)-1 respectively (so they both start from opposite ends)
-    left, right = 0, len(s) - 1
+    left = 0
+    right = len(s) - 1
     
     while left < right: # now we are setting the while condition that the index on the left should always be less than the index on the right, the moment this stops we break out of the loop.
         # Swap the elements at the left and right pointers
-        s[left], s[right] = s[right], s[left]
+        s[left] = s[right]
+        s[right] = s[left]
         # After swapping we then want to increment the index of the left side  and decrement the index on the right side so we move the pointers towards the center
         left += 1
         right -= 1
