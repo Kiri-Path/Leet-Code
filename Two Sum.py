@@ -8,6 +8,14 @@
 
 ### SOLUTION
 
+
+###APPROACH  : 
+#easiest way would be to look at all possible pairs using integers i & j in a nested for loop but that would make it an O(n^2).
+# to avoid looking at all the pairs we can create a hash map where each key will be the number and value will be the index (because thats what the problem is asking).
+# now we only need to loop through the array once and therefore will only be an O(n) solution. 
+# so we pick a value, subtract it from the target so we know which value we are looking for and we can search for that in the array and return the index(value if it is)
+
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
