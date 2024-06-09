@@ -1,4 +1,13 @@
-###  ride hailing
+###  RIDE HAILING
+
+SELECT cities.name, SUM(rides.fare) AS earnings
+FROM cities
+JOIN drivers ON cities.id = drivers.city_id
+JOIN rides ON drivers.id = rides.driver_id
+GROUP BY cities.name
+ORDER BY earnings ASC, cities.name ASC;
+
+
 
 select c.name, sum(r.fare)
 from cities c
@@ -20,7 +29,11 @@ limit 100
 
 
 
-### families country
+
+
+
+### FAMILIES COUNTRY
+  
 
 select count(name)
 from countries
@@ -28,7 +41,9 @@ where min_size <= (select max(family_size) from families)
 
 
 
-#### Campaigns failure success
+#### CAMPAIGNS SUCCESS FAILURE
+
+  
 
 WITH SuccessCounts AS (
   SELECT
@@ -104,3 +119,51 @@ SELECT
   total
 FROM
   FinalResult;
+
+
+
+
+
+#### ORDER QUERY
+
+
+WITH EarliestOrder AS (
+  SELECT MIN(ORDER_DATE) AS earliest_order_date
+  FROM `your_dataset.Orders`
+),
+ValidOrders AS (
+  SELECT *
+  FROM `your_dataset.Orders`
+  WHERE ORDER_DATE <= DATE_ADD((SELECT earliest_order_date FROM EarliestOrder), INTERVAL 10 YEAR)
+),
+MaxPrice AS (
+  SELECT MAX(PRICE) AS max_price
+  FROM ValidOrders
+)
+SELECT c.NAME, o.PRICE
+FROM `your_dataset.Customers` c
+JOIN `your_dataset.Orders` o ON c.ORDER_ID = o.ID
+JOIN MaxPrice mp ON o.PRICE = mp.max_price
+WHERE o.ORDER_DATE <= DATE_ADD((SELECT earliest_order_date FROM EarliestOrder), INTERVAL 10 YEAR);
+
+
+
+
+### goals scored
+
+
+SELECT 
+  c.ID AS country_id,
+  c.NAME AS country_name,
+  SUM(g.goals) AS goals_scored
+FROM 
+  Goals g
+JOIN 
+  Players p ON g.player_id = p.ID
+JOIN 
+  Countries c ON g.country_id = c.ID
+GROUP BY 
+  c.ID, c.NAME
+ORDER BY 
+  goals_scored DESC,
+  c.ID ASC;
