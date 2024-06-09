@@ -25,8 +25,8 @@ def reverseString(s):
     
     while left < right: # now we are setting the while condition that the index on the left should always be less than the index on the right, the moment this stops we break out of the loop.
         # Swap the elements at the left and right pointers
-        s[left] = s[right]
-        s[right] = s[left]
+        # you have to the this in one line other if you split it into 2 lines it would reverse the first line
+        s[left], s[right] = s[right], s[left]
         # After swapping we then want to increment the index of the left side  and decrement the index on the right side so we move the pointers towards the center
         left += 1
         right -= 1
