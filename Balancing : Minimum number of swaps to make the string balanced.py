@@ -2,19 +2,25 @@
 
 class Solution:
     def minSwaps(self, s: str) -> int:
-    # Cancel out all the matched pairs, then we'll be left with ']]]..[[['.
-    # The answer is ceil(# of unmatched pairs // 2).
-    # Cancel out all the matched pairs, then we'll be left with ']]]..[[['.
-    # The answer is ceil(# of unmatched pairs // 2).
-        imbalance = 0
-        max_imbalance = 0
-
+        # Initialize counters for unbalanced closing brackets
+        close_count = 0
+        max_close_count = 0
+        
+        # Iterate through the string
         for char in s:
-            if char =='[':
-                imbalance +=1
-            else:
-                imbalance -=1
-            
-            if imbalance <0:
-                max_imbalance = max(max_imbalance, -imbalance)
-        return (max_imbalance+1)//2
+            if char == '[':
+                if close_count > 0:
+                    # We have an unmatched closing bracket, so pair it with this opening bracket
+                    close_count -= 1
+                else:
+                    # No unmatched closing bracket, nothing to pair
+                    pass
+            else:  # char == ']'
+                close_count += 1
+                max_close_count = max(max_close_count, close_count)
+        
+        # The minimum number of swaps needed is half the max_close_count
+        return (max_close_count + 1) // 2
+
+
+
