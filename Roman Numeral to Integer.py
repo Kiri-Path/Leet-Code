@@ -24,42 +24,19 @@ Given a roman numeral, convert it to an integer.
 
 class Solution:
     def romanToInt(self, s: str) -> int:
-        # Mapping of Roman numerals to their integer values
-        roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
         
-        result = 0
+        mapping = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        
+        result = 0 
         n = len(s)
+        i = 0 
         
-        # Iterate over the string from left to right
-        for i in range(n):
-            value = roman_values[s[i]]
-            
-            # If this is not the last character and the next numeral is larger, subtract current value
-            if i < n - 1 and value < roman_values[s[i + 1]]:
-                result -= value
+        while i<n:
+            if i < n-1 and mapping[s[i]] < mapping[s[i+1]]:
+                summ +=mapping[s[i+1]] - mapping[s[i]]
+                i+=2
             else:
-                result += value
+                summ+=mapping[s[i]]
+                i +=1
         
-        return result
-
-
-
-### SOLUTION REVERSING STRING
-
-
-class Solution:
-    def romanToInt(self, s: str) -> int:
-
-        roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-        result = 0
-        prev_value = 0
-
-        for char in reversed(s):
-            value = roman_values[char]
-            if value < prev_value:
-                result -= value
-            else:
-                result += value
-            prev_value = value
-
         return result
