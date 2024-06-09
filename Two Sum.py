@@ -16,6 +16,24 @@
 # so we pick a value, subtract it from the target so we know which value we are looking for and we can search for that in the array and return the index(value if it is)
 
 
+
+# BRUTE FORCE SOLUTION O(n^2) 
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+        return []  # No solution found
+
+
+# EFFICENT O(n) solution
+
+
+
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
@@ -33,3 +51,5 @@ class Solution:
 
             if y in h and h[y] != i:
                 return [i, h[y]]
+
+        return [] # no solution found
