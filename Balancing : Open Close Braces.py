@@ -1,25 +1,33 @@
-def is_balanced_braces(string):
-    stack = []
-    braces_map = {')': '(', '}': '{', ']': '['}  # Mapping of closing brackets to their corresponding opening brackets
-    
-    for char in string:
-        if char in braces_map.values():
-            stack.append(char)  # Push opening brackets onto the stack
-        elif char in braces_map:
-            if not stack or stack.pop() != braces_map[char]:
-                return 'No'
-    
-    if not stack:
-        return 'Yes'  # If the stack is empty, return 'Yes' indicating balanced braces
-    else:
-        return 'No'   # If the stack is not empty, return 'No' indicating unbalanced braces
+###APPROAch
 
-def verify_braces_balance(braces):
-    return [is_balanced_braces(string) for string in braces]
+1) first create dictionary of braces closing:opening
+2) iterate through string,
+3) if the first character is a closing bracket then immediately we know its not balanced. so we check if the character is a closing bracket and that the stack is empty.
+4) if its not , then we pop the top element off and check if its the equivalent opening bracket, if not then also false. 
+5) otherwise if it was a opening bracket then just append. 
 
-# Test the function with the example input
-braces = ['[{}]', '[{]}']
-print(verify_braces_balance(braces))  # Output: ['Yes', 'No']
+
+
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        braces_map = {')': '(', '}': '{', ']': '['}  # Mapping of closing brackets to their corresponding opening brackets
+    
+        for char in s:
+            if char in braces_map: 
+                if not stack:
+                    return False
+
+                top_element = stack.pop()
+                if braces_map[char] != top_element:  
+                    return False
+
+            else: 
+                stack.append(char)
+        
+        return not stack
+
 
 
 
